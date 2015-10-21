@@ -2,6 +2,7 @@ package com.example.mantenimiento.numprimo;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -13,10 +14,13 @@ public class MainActivity extends Activity {
     private EditText editText;
     private TextView textView;
 
+    String tag="CICLO DE VIDA";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
     }
 
     public void calcularPrimo(View v)
@@ -24,23 +28,61 @@ public class MainActivity extends Activity {
         editText= (EditText) findViewById(R.id.editText);
         textView= (TextView) findViewById(R.id.textView3);
 
-        int cont=0;
-        long num=Integer.parseInt(editText.getText().toString());
-        for(int i=1;i<num;i++)
-        {
-            if(num%i==0)
-            {
-                cont++;
+        int p=1;
+        int d=2;
+        int c=2;
+        int mos=0;
+        long numero=Integer.parseInt(editText.getText().toString());
+
+        while (c <= numero) {
+            if (p % d == 0) {
+                if (p == d) {
+                    mos =p;
+                    c++;
+                }
+                d = 2;
+                p++;
+            }else {
+                d++;
             }
         }
-        if(cont<=2)
-        {
-            textView.setText("El nº "+num+" es PRIMO");
-        }
-        else if(cont>2)
-        {
-            textView.setText("El nº "+num+" NO ES PRIMO");
-        }
+        textView.setText("El nº primo de la posición "+numero+" es el "+mos);
+    }
+
+    public void onStart()
+    {
+        super.onStart();
+        Log.d(tag,"ESTOY EN EL onStart()");
+    }
+
+    public void onRestart()
+    {
+        super.onRestart();
+        Log.d(tag, "ESTOY EN EL onRestart()");
+    }
+
+    public void onResume()
+    {
+        super.onResume();
+        Log.d(tag, "ESTOY EN EL onResume()");
+    }
+
+    public void onPause()
+    {
+        super.onPause();
+        Log.d(tag, "ESTOY EN EL onPause()");
+    }
+
+    public void onStop()
+    {
+        super.onStop();
+        Log.d(tag, "ESTOY EN EL onStop()");
+    }
+
+    public void onDestroy()
+    {
+        super.onDestroy();
+        Log.d(tag, "ESTOY EN EL onDestroy()");
     }
 
     @Override
