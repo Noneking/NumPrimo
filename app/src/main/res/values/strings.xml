@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">NumPrimo</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="label1">CALCULADORA DE Nº PRIMOS</string>
+    <string name="label2">-Introduce la posición del nº primo que quieras calcular:</string>
+    <string name="labelResultado"></string>
+    <string name="editText"></string>
+    <string name="boton">Calcular</string>
+    <string name="resultado"></string>
+</resources>
